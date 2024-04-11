@@ -1,0 +1,25 @@
+@model List<Carrello>
+
+@{
+    ViewData["Title"] = "Carrello";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome Prodotto</th>
+            <th>Prezzo</th>
+            <th>Quantità</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NomeProdotto</td>
+                <td>@item.Prezzo</td>
+                <td>@item.Quantita</td>
+            </tr>
+        }
+    </tbody>
+</table>

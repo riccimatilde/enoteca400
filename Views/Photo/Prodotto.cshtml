@@ -1,0 +1,33 @@
+@model PhotoDetailsModel
+
+@{
+    ViewBag.Title = "Photo Gallery";
+}
+<br><br><br><br>
+<h2 style="text-align: center">Photo Gallery</h2>
+
+<table style="margin: 0 auto;">
+    @for (int i = 0; i < Model.PhotoUrls.Count; i += 3)
+
+    {
+        <tr>
+            @for (int j = i; j < i + 3 && j < Model.PhotoUrls.Count; j++)
+
+            {
+                <td style="padding: 10px; text-align: center; vertical-align: middle;">
+                    <a href="@Url.Action("Details", "Photo", new { id = j + 1 })">
+                        <img src="@Url.Content(Model.PhotoUrls[j])" alt="Photo"
+                            style="width: 350px; height: 500px; margin-bottom: 10px; border: 20px solid firebrick; " />
+                        <p>Clicca per scoprire di più su questo vino!</p>
+                    </a>
+                    <form method="post" action="@Url.Action("Carrello", "Home")">
+                        <input type="hidden" name="productId" value="@(j + 1)" />
+                        <input type="submit" value="Aggiungi al carrello" />
+                    </form>
+                </td>
+            }
+        </tr>
+    }
+</table>
+<br><br>
+<br><br>

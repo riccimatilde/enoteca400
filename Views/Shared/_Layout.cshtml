@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - progettoECommerce</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/progettoECommerce.styles.css" asp-append-version="true" />
+
+</head>
+
+<body style="font-family: 'Times New Roman', Times, serif; background-color: bisque;">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed-top"
+            style="background-color: #800020; border-bottom: 1px solid #800000; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <div class="container-fluid">
+                <a class="navbar-brand rounded" asp-area="" asp-controller="Home" asp-action="Index"
+                    style="background-color: #800020; color:white">
+                    <img src="~/enoteca quattrocento logo.jpeg" alt="" width="60" height="60"
+                        class="d-inline-block align-top"> Enoteca Quattrocento</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 gap-2 fixed">
+                        <li class="nav-item">
+                            <a class="nav-link text-white rounded" asp-area="" asp-controller="Home" asp-action="Index"
+                                style="background-color: #800020;" &nbsp;>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white rounded" asp-area="" asp-controller="Home"
+                                asp-action="ChiSiamo" style="background-color: #800020;" &nbsp;>Chi Siamo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white rounded" asp-area="" asp-controller="Photo"
+                                asp-action="Prodotto" style="background-color: #800020;" &nbsp;>Photo Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white rounded" asp-area="" asp-controller="Home"
+                                asp-action="Carrello" style="background-color: #800020;" &nbsp;>Carrello</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white roundend" asp-area="" asp-controller="Home"
+                                asp-action="Privacy" style="background-color: #800020;" &nbsp;>Privacy</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav navbar-right">
+                        @if (Context.Session.GetString("isAuthenticated") != "OK")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home"
+                                    asp-action="Registrazione">SignUp</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home"
+                                    asp-action="Login">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home"
+                                    asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p style="margin-bottom: 10px; line-height: 1">&copy; 2024 Creato da Matilde Ricci, Luz Santana,
+                        Jonida
+                        Vezi - Enoteca Quattrocento - <a asp-area="" asp-controller="Home"
+                            asp-action="Privacy">Privacy</a></p>
+                    <p style="margin-top: 10px; line-height: 1">Email: <a
+                            href="mailto:enoteca400@gmail.com">enoteca400@gmail.com</a></p>
+                    <p style="margin-top: 10px; line-height: 1">Indirizzo: Via Antonio Battarra, 17, 47921 Rimini </p>
+                    <p style="margin-top: 10px; line-height: 1">Numero: +39 349 532 0349 </p>
+                </div>
+                <div class="col-auto" style="margin-top: 10px;">
+                    <ul class="flex gap-4 md:gap-6" data-component-name="social" style="margin-top: 0;">
+                        <li><a class="block h-6 w-6 fill-white hover:fill-shade-30"
+                                aria-describedby="NewWindowExternalSite"
+                                href="https://www.facebook.com/vineria.quattrocento"
+                                rel="me nofollow noopener noreferrer" target="_blank"
+                                data-component-name="social-facebook"><img src="~/fotoCarosello/facebook2.png"
+                                    alt="Facebook"></a></li>
+                        <li><a class="block h-6 w-6 fill-white hover:fill-shade-30"
+                                aria-describedby="NewWindowExternalSite" href="https://www.instagram.com/shopify/"
+                                rel="me nofollow noopener noreferrer" target="_blank"
+                                data-component-name="social-instagram"><img src="~/fotoCarosello/ig2.png"
+                                    alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
